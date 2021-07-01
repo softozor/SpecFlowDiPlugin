@@ -15,28 +15,28 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugType>full</DebugType>
-	<CodeAnalysisRuleSet>..\stylecop\rules\CodeAnalysisNormalProjectDebug.ruleset</CodeAnalysisRuleSet>
+	<CodeAnalysisRuleSet>..\code-analysis\stylecop\rules\CodeAnalysisNormalProjectDebug.ruleset</CodeAnalysisRuleSet>
 	<EnableNETAnalyzers>true</EnableNETAnalyzers>
 	<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 	<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugBodi|AnyCPU'">
     <DebugType>full</DebugType>
-    <CodeAnalysisRuleSet>..\stylecop\rules\CodeAnalysisNormalProjectDebug.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\code-analysis\stylecop\rules\CodeAnalysisNormalProjectDebug.ruleset</CodeAnalysisRuleSet>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
 	<DebugType>pdbonly</DebugType>
-	<CodeAnalysisRuleSet>..\stylecop\rules\CodeAnalysisNormalProject.ruleset</CodeAnalysisRuleSet>
+	<CodeAnalysisRuleSet>..\code-analysis\stylecop\rules\CodeAnalysisNormalProject.ruleset</CodeAnalysisRuleSet>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
 	<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseBodi|AnyCPU'">
     <DebugType>pdbonly</DebugType>
-    <CodeAnalysisRuleSet>..\stylecop\rules\CodeAnalysisNormalProject.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\code-analysis\stylecop\rules\CodeAnalysisNormalProject.ruleset</CodeAnalysisRuleSet>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
