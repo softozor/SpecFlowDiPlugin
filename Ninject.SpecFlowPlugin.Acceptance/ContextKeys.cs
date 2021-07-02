@@ -34,6 +34,8 @@
 
         TransientDisposableScenarioDependency1IsDisposed,
 
-        TransientDisposableScenarioDependency2IsDisposed
+        TransientDisposableScenarioDependency2IsDisposed,
+
+        MyPropSetInStepClass1
     }
 }

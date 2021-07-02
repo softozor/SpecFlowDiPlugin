@@ -149,6 +149,7 @@
         [When(@"I set property MyProp of SingletonFeatureDependency to value '(.*)' in StepClass1")]
         public void WhenISetPropertyMyPropOfSingletonFeatureDependencyToValueInStepClass1(string writtenValue)
         {
+            this.featureContext.Save(true, ContextKeys.MyPropSetInStepClass1);
             this.singletonFeatureDependency.MyProp = writtenValue;
         }
 
@@ -194,14 +195,11 @@
             this.singletonScenarioDependency.MyProp.Should().BeNullOrEmpty();
         }
 
-        [Then(@"the property MyProp of SingletonFeatureDependency has value '(.*)' in StepClass1")]
+        [Then(@"the property MyProp of SingletonFeatureDependency has value '(.*)' in StepClass1 if the previous scenario set it")]
         public void ThenThePropertyMyPropOfSingletonFeatureDependencyHasValueInStepClass1(string readValue)
         {
-            if (string.IsNullOrEmpty(readValue))
-            {
-                this.singletonFeatureDependency.MyProp.Should().BeNullOrEmpty();
-            }
-            else
+            var myPropSet = this.featureContext.Get<bool>(ContextKeys.MyPropSetInStepClass1);
+            if (myPropSet)
             {
                 this.singletonFeatureDependency.MyProp.Should().Be(readValue);
             }
