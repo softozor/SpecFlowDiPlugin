@@ -72,9 +72,12 @@
         {
             var mustHaveDisposedDependency2 =
                 this.testThreadContext.Get<bool>(ContextKeys.MustDisposeSingletonFeatureDependency2);
-            var dependency2Disposed =
-                this.testThreadContext.Get<bool>(ContextKeys.SingletonDisposableFeatureDependency2IsDisposed);
-            dependency2Disposed.Should().Be(mustHaveDisposedDependency2);
+            if (mustHaveDisposedDependency2)
+            {
+                var dependency2Disposed =
+                    this.testThreadContext.Get<bool>(ContextKeys.SingletonDisposableFeatureDependency2IsDisposed);
+                dependency2Disposed.Should().BeTrue();
+            }
         }
 
         [Then(@"SingletonDisposableFeatureDependency1 has been disposed if the previous feature had to dispose it")]
@@ -82,9 +85,12 @@
         {
             var mustHaveDisposedDependency1 =
                 this.testThreadContext.Get<bool>(ContextKeys.MustDisposeSingletonFeatureDependency1);
-            var dependency1Disposed =
-                this.testThreadContext.Get<bool>(ContextKeys.SingletonDisposableFeatureDependency1IsDisposed);
-            dependency1Disposed.Should().Be(mustHaveDisposedDependency1);
+            if (mustHaveDisposedDependency1)
+            {
+                var dependency1Disposed =
+                    this.testThreadContext.Get<bool>(ContextKeys.SingletonDisposableFeatureDependency1IsDisposed);
+                dependency1Disposed.Should().BeTrue();
+            }
         }
 
         [Then(@"TransientDisposableFeatureDependency1 has been disposed if the previous feature had to dispose it")]
@@ -92,9 +98,12 @@
         {
             var mustHaveDisposedDependency1 =
                 this.testThreadContext.Get<bool>(ContextKeys.MustDisposeTransientFeatureDependency1);
-            var dependency1Disposed =
-                this.testThreadContext.Get<bool>(ContextKeys.TransientDisposableFeatureDependency1IsDisposed);
-            dependency1Disposed.Should().Be(mustHaveDisposedDependency1);
+            if (mustHaveDisposedDependency1)
+            {
+                var dependency1Disposed =
+                    this.testThreadContext.Get<bool>(ContextKeys.TransientDisposableFeatureDependency1IsDisposed);
+                dependency1Disposed.Should().BeTrue();
+            }
         }
 
         [Then(@"TransientDisposableFeatureDependency2 has been disposed if the previous feature had to dispose it")]
@@ -102,9 +111,12 @@
         {
             var mustHaveDisposedDependency2 =
                 this.testThreadContext.Get<bool>(ContextKeys.MustDisposeTransientFeatureDependency2);
-            var dependency2Disposed =
-                this.testThreadContext.Get<bool>(ContextKeys.TransientDisposableFeatureDependency2IsDisposed);
-            dependency2Disposed.Should().Be(mustHaveDisposedDependency2);
+            if (mustHaveDisposedDependency2)
+            {
+                var dependency2Disposed =
+                    this.testThreadContext.Get<bool>(ContextKeys.TransientDisposableFeatureDependency2IsDisposed);
+                dependency2Disposed.Should().BeTrue();
+            }
         }
 
         [Then(@"TransientDisposableFeatureDependency1 has not been disposed if the previous feature had to dispose it")]

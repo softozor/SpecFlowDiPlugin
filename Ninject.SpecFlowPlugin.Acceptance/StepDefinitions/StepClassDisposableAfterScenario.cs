@@ -76,17 +76,23 @@
             {
                 var mustHaveDisposedDependency1 =
                     this.featureContext.Get<bool>(ContextKeys.MustDisposeSingletonScenarioDependency1);
-                var dependency1Disposed =
-                    this.featureContext.Get<bool>(ContextKeys.SingletonDisposableScenarioDependency1IsDisposed);
-                dependency1Disposed.Should().Be(mustHaveDisposedDependency1);
+                if (mustHaveDisposedDependency1)
+                {
+                    var dependency1Disposed =
+                        this.featureContext.Get<bool>(ContextKeys.SingletonDisposableScenarioDependency1IsDisposed);
+                    dependency1Disposed.Should().BeTrue();
+                }
             }
             else
             {
                 var mustHaveDisposedDependency2 =
                     this.featureContext.Get<bool>(ContextKeys.MustDisposeSingletonScenarioDependency2);
-                var dependency2Disposed =
-                    this.featureContext.Get<bool>(ContextKeys.SingletonDisposableScenarioDependency2IsDisposed);
-                dependency2Disposed.Should().Be(mustHaveDisposedDependency2);
+                if (mustHaveDisposedDependency2)
+                {
+                    var dependency2Disposed =
+                        this.featureContext.Get<bool>(ContextKeys.SingletonDisposableScenarioDependency2IsDisposed);
+                    dependency2Disposed.Should().BeTrue();
+                }
             }
         }
 
@@ -99,17 +105,23 @@
             {
                 var mustHaveDisposedDependency1 =
                     this.featureContext.Get<bool>(ContextKeys.MustDisposeTransientScenarioDependency1);
-                var dependency1Disposed =
-                    this.featureContext.Get<bool>(ContextKeys.TransientDisposableScenarioDependency1IsDisposed);
-                dependency1Disposed.Should().Be(mustHaveDisposedDependency1);
+                if (mustHaveDisposedDependency1)
+                {
+                    var dependency1Disposed =
+                        this.featureContext.Get<bool>(ContextKeys.TransientDisposableScenarioDependency1IsDisposed);
+                    dependency1Disposed.Should().BeTrue();
+                }
             }
             else
             {
                 var mustHaveDisposedDependency2 =
                     this.featureContext.Get<bool>(ContextKeys.MustDisposeTransientScenarioDependency2);
-                var dependency2Disposed =
-                    this.featureContext.Get<bool>(ContextKeys.TransientDisposableScenarioDependency2IsDisposed);
-                dependency2Disposed.Should().Be(mustHaveDisposedDependency2);
+                if (mustHaveDisposedDependency2)
+                {
+                    var dependency2Disposed =
+                        this.featureContext.Get<bool>(ContextKeys.TransientDisposableScenarioDependency2IsDisposed);
+                    dependency2Disposed.Should().BeTrue();
+                }
             }
         }
 

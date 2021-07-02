@@ -27,7 +27,15 @@
         public override IEnumerable<object> Resolve(IRequest request)
         {
             var instances = base.Resolve(request).ToList();
-            this.pool.Add(instances);
+
+            // if the parent can resolve the request, then the parent should be responsible for disposing it
+            // however, this code is problematic if the same class is registered in both a kernel and its parent;
+            // in such a case, only the instance created from the parent kernel will be disposed
+            if (!this.ParentResolutionRoot.CanResolve(request))
+            {
+                this.pool.Add(instances);
+            }
+
             return instances;
         }
 

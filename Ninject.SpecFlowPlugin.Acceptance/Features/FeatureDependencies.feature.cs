@@ -136,7 +136,7 @@ namespace Ninject.SpecFlowPlugin.Acceptance.Features
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Injected transient feature dependencies are created anew in all scenarios", @"    Each time a transient feature dependency is injected in a binding class, we get a new
     instance of that class. We might expect that the transient feature dependency be transient
     over the features only, i.e. scenarios of the same feature would get the same instance, while
-    scenarios of different features would get different instances. However, in our implementation
+    scenarios of different features would get different instances. However, our implementation
     does not put the feature container in a feature scope. This is the same behavior as with BoDi
     when the feature dependency is registered as InstancePerDependency in the feature container.
     See how TransientFeatureDependency is registered in Hooks.DependenciesConfigurator.SetupFeatureContainer.", tagsOfScenario, argumentsOfScenario, this._featureTags);
