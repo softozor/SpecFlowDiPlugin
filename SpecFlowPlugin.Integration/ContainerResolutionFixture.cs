@@ -95,8 +95,10 @@
                     var scenarioKernel = scenarioContainer.Resolve<TContainerType>();
 
                     // Act
-                    var objectContainerFromFeatureKernel = this.ResolveFromCustomContainer<IObjectContainer>(featureKernel);
-                    var objectContainerFromScenarioKernel = this.ResolveFromCustomContainer<IObjectContainer>(scenarioKernel);
+                    var objectContainerFromFeatureKernel =
+                        this.ResolveFromCustomContainer<IObjectContainer>(featureKernel);
+                    var objectContainerFromScenarioKernel =
+                        this.ResolveFromCustomContainer<IObjectContainer>(scenarioKernel);
 
                     // Assert
                     objectContainerFromScenarioKernel.Should().NotBeSameAs(objectContainerFromFeatureKernel);
@@ -121,8 +123,10 @@
                         var scenarioKernel = scenarioContainer.Resolve<TContainerType>();
 
                         // Act
-                        var objectContainerFromTestThreadKernel = this.ResolveFromCustomContainer<IObjectContainer>(testThreadKernel);
-                        var objectContainerFromScenarioKernel = this.ResolveFromCustomContainer<IObjectContainer>(scenarioKernel);
+                        var objectContainerFromTestThreadKernel =
+                            this.ResolveFromCustomContainer<IObjectContainer>(testThreadKernel);
+                        var objectContainerFromScenarioKernel =
+                            this.ResolveFromCustomContainer<IObjectContainer>(scenarioKernel);
 
                         // Assert
                         objectContainerFromScenarioKernel.Should().NotBeSameAs(objectContainerFromTestThreadKernel);
@@ -164,8 +168,10 @@
                     var featureKernel = featureContainer.Resolve<TContainerType>();
 
                     // Act
-                    var objectContainerFromFeatureKernel = this.ResolveFromCustomContainer<IObjectContainer>(featureKernel);
-                    var objectContainerFromTestThreadKernel = this.ResolveFromCustomContainer<IObjectContainer>(testThreadKernel);
+                    var objectContainerFromFeatureKernel =
+                        this.ResolveFromCustomContainer<IObjectContainer>(featureKernel);
+                    var objectContainerFromTestThreadKernel =
+                        this.ResolveFromCustomContainer<IObjectContainer>(testThreadKernel);
 
                     // Assert
                     objectContainerFromTestThreadKernel.Should().NotBeSameAs(objectContainerFromFeatureKernel);

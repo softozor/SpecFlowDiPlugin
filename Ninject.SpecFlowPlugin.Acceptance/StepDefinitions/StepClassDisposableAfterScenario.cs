@@ -2,7 +2,6 @@
 {
     using FluentAssertions;
     using Ninject.SpecFlowPlugin.Acceptance.TestClasses;
-    using SpecFlowPluginBase.Extensions;
     using TechTalk.SpecFlow;
 
     [Binding]
@@ -96,7 +95,6 @@
         public void ThenTransientDisposableScenarioDependencyHasBeenDisposedIfThePreviousScenarioHadToDisposeIt(
             int injectedDependencyNb)
         {
-#if DEBUG || RELEASE
             if (injectedDependencyNb == 1)
             {
                 var mustHaveDisposedDependency1 =
@@ -113,7 +111,25 @@
                     this.featureContext.Get<bool>(ContextKeys.TransientDisposableScenarioDependency2IsDisposed);
                 dependency2Disposed.Should().Be(mustHaveDisposedDependency2);
             }
-#endif
+        }
+
+        [Then(
+            @"TransientDisposableScenarioDependency(.*) has not been disposed if the previous scenario had to dispose it")]
+        public void ThenTransientDisposableScenarioDependencyHasNotBeenDisposedIfThePreviousScenarioHadToDisposeIt(
+            int injectedDependencyNb)
+        {
+            if (injectedDependencyNb == 1)
+            {
+                var dependency1Disposed =
+                    this.featureContext.Get<bool>(ContextKeys.TransientDisposableScenarioDependency1IsDisposed);
+                dependency1Disposed.Should().BeFalse();
+            }
+            else
+            {
+                var dependency2Disposed =
+                    this.featureContext.Get<bool>(ContextKeys.TransientDisposableScenarioDependency2IsDisposed);
+                dependency2Disposed.Should().BeFalse();
+            }
         }
     }
 }

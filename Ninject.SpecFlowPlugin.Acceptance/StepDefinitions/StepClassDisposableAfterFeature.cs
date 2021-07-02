@@ -2,7 +2,6 @@
 {
     using FluentAssertions;
     using Ninject.SpecFlowPlugin.Acceptance.TestClasses;
-    using SpecFlowPluginBase.Extensions;
     using TechTalk.SpecFlow;
 
     [Binding]
@@ -91,25 +90,37 @@
         [Then(@"TransientDisposableFeatureDependency1 has been disposed if the previous feature had to dispose it")]
         public void ThenTransientDisposableFeatureDependency1HasBeenDisposedIfThePreviousFeatureHadToDisposeIt()
         {
-#if DEBUG || RELEASE
             var mustHaveDisposedDependency1 =
                 this.testThreadContext.Get<bool>(ContextKeys.MustDisposeTransientFeatureDependency1);
             var dependency1Disposed =
                 this.testThreadContext.Get<bool>(ContextKeys.TransientDisposableFeatureDependency1IsDisposed);
             dependency1Disposed.Should().Be(mustHaveDisposedDependency1);
-#endif
         }
 
         [Then(@"TransientDisposableFeatureDependency2 has been disposed if the previous feature had to dispose it")]
         public void ThenTransientDisposableFeatureDependency2HasBeenDisposedIfThePreviousFeatureHadToDisposeIt()
         {
-#if DEBUG || RELEASE
             var mustHaveDisposedDependency2 =
                 this.testThreadContext.Get<bool>(ContextKeys.MustDisposeTransientFeatureDependency2);
             var dependency2Disposed =
                 this.testThreadContext.Get<bool>(ContextKeys.TransientDisposableFeatureDependency2IsDisposed);
             dependency2Disposed.Should().Be(mustHaveDisposedDependency2);
-#endif
+        }
+
+        [Then(@"TransientDisposableFeatureDependency1 has not been disposed if the previous feature had to dispose it")]
+        public void ThenTransientDisposableFeatureDependency1HasNotBeenDisposedIfThePreviousFeatureHadToDisposeIt()
+        {
+            var dependency1Disposed =
+                this.testThreadContext.Get<bool>(ContextKeys.TransientDisposableFeatureDependency1IsDisposed);
+            dependency1Disposed.Should().BeFalse();
+        }
+
+        [Then(@"TransientDisposableFeatureDependency2 has not been disposed if the previous feature had to dispose it")]
+        public void ThenTransientDisposableFeatureDependency2HasNotBeenDisposedIfThePreviousFeatureHadToDisposeIt()
+        {
+            var dependency2Disposed =
+                this.testThreadContext.Get<bool>(ContextKeys.TransientDisposableFeatureDependency2IsDisposed);
+            dependency2Disposed.Should().BeFalse();
         }
     }
 }

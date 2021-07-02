@@ -2,7 +2,6 @@
 namespace Ninject.SpecFlowPlugin.Acceptance
 {
     using System;
-    using Ninject;
     using Ninject.SpecFlowPlugin.Acceptance.TestClasses;
     using SpecFlowPluginBase;
     using SpecFlowPluginBase.Attributes;

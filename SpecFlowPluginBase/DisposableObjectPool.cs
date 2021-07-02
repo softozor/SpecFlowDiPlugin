@@ -45,7 +45,8 @@
 
         private static bool IsPoolable(IDisposable x)
         {
-            return !(x is TContainerType) && !(x is ObjectContainer) && !(x is ScenarioContext) && !(x is FeatureContext) && !(x is TestThreadContext);
+            return !(x is TContainerType) && !(x is ObjectContainer) && !(x is ScenarioContext) &&
+                   !(x is FeatureContext) && !(x is TestThreadContext);
         }
     }
 }

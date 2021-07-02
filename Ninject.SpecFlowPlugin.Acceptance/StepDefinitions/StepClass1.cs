@@ -1,9 +1,7 @@
 ﻿namespace Ninject.SpecFlowPlugin.Acceptance.StepDefinitions
 {
-    using Castle.Core.Internal;
     using FluentAssertions;
     using Ninject.SpecFlowPlugin.Acceptance.TestClasses;
-    using SpecFlowPluginBase.Extensions;
     using TechTalk.SpecFlow;
 
     [Binding]
@@ -199,7 +197,7 @@
         [Then(@"the property MyProp of SingletonFeatureDependency has value '(.*)' in StepClass1")]
         public void ThenThePropertyMyPropOfSingletonFeatureDependencyHasValueInStepClass1(string readValue)
         {
-            if (readValue.IsNullOrEmpty())
+            if (string.IsNullOrEmpty(readValue))
             {
                 this.singletonFeatureDependency.MyProp.Should().BeNullOrEmpty();
             }

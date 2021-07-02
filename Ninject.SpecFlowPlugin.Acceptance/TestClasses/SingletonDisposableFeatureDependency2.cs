@@ -1,6 +1,5 @@
 ﻿namespace Ninject.SpecFlowPlugin.Acceptance.TestClasses
 {
-    using SpecFlowPluginBase.Extensions;
     using TechTalk.SpecFlow;
 
     public sealed class SingletonDisposableFeatureDependency2 : ISingletonDisposableFeatureDependency2

@@ -76,20 +76,27 @@ namespace Ninject.SpecFlowPlugin.Acceptance.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Transient disposable scenario dependencies are disposed after scenario")]
+        [NUnit.Framework.CategoryAttribute("ninject")]
         [NUnit.Framework.TestCaseAttribute("1", "2", null)]
         [NUnit.Framework.TestCaseAttribute("2", "1", null)]
         public virtual void TransientDisposableScenarioDependenciesAreDisposedAfterScenario(string injectedDependency, string disposedDependency, string[] exampleTags)
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] @__tags = new string[] {
+                    "ninject"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("injected dependency", injectedDependency);
             argumentsOfScenario.Add("disposed dependency", disposedDependency);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Transient disposable scenario dependencies are disposed after scenario", @"    In order to check if a transient disposable scenario dependency actually is disposed
     after scenario execution, we need to assert disposal on feature context.
 
-    Transient disposable scenario dependencies are not disposed after scenario execution
-    when we use BoDi as the DI framework instead of Ninject.", tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 7
+    Transient disposable scenario dependencies are disposed after scenario execution
+    when we use Ninject.", tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 8
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -109,13 +116,67 @@ namespace Ninject.SpecFlowPlugin.Acceptance.Features
             else
             {
                 this.ScenarioStart();
-#line 15
+#line 16
         testRunner.Given(string.Format("I have injected TransientDisposableScenarioDependency{0} in the binding class Ste" +
                             "pClassDisposableAfterScenario", injectedDependency), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 16
+#line 17
         testRunner.Then(string.Format("TransientDisposableScenarioDependency{0} has been disposed if the previous scenar" +
                             "io had to dispose it", disposedDependency), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Transient disposable scenario dependencies are not disposed after scenario")]
+        [NUnit.Framework.CategoryAttribute("bodi")]
+        [NUnit.Framework.TestCaseAttribute("1", "2", null)]
+        [NUnit.Framework.TestCaseAttribute("2", "1", null)]
+        public virtual void TransientDisposableScenarioDependenciesAreNotDisposedAfterScenario(string injectedDependency, string disposedDependency, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "bodi"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("injected dependency", injectedDependency);
+            argumentsOfScenario.Add("disposed dependency", disposedDependency);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Transient disposable scenario dependencies are not disposed after scenario", @"    In order to check if a transient disposable scenario dependency actually is disposed
+    after scenario execution, we need to assert disposal on feature context.
+
+    Transient disposable scenario dependencies are not disposed after scenario execution
+    when we use BoDi.", tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 26
+    this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 34
+        testRunner.Given(string.Format("I have injected TransientDisposableScenarioDependency{0} in the binding class Ste" +
+                            "pClassDisposableAfterScenario", injectedDependency), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 35
+        testRunner.Then(string.Format("TransientDisposableScenarioDependency{0} has not been disposed if the previous sc" +
+                            "enario had to dispose it", disposedDependency), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

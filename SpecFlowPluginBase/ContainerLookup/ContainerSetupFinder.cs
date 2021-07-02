@@ -34,7 +34,8 @@
                         .GetMethods(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public)
                         .Where(HasDependenciesAttribute))
                     {
-                        ContainerConfiguratorChecker<TDependenciesAttribute, TContainerType>.CheckMethodSignature(methodInfo);
+                        ContainerConfiguratorChecker<TDependenciesAttribute, TContainerType>.CheckMethodSignature(
+                            methodInfo);
 
                         return container => methodInfo.Invoke(null, new object[] { container });
                     }

@@ -83,8 +83,10 @@
                     // Act
                     var featureKernel = featureContainer.Resolve<TContainerType>();
                     var scenarioKernel = scenarioContainer.Resolve<TContainerType>();
-                    var featureContextFromFeatureKernel = this.ResolveFromCustomContainer<FeatureContext>(featureKernel);
-                    var featureContextFromScenarioKernel = this.ResolveFromCustomContainer<FeatureContext>(scenarioKernel);
+                    var featureContextFromFeatureKernel =
+                        this.ResolveFromCustomContainer<FeatureContext>(featureKernel);
+                    var featureContextFromScenarioKernel =
+                        this.ResolveFromCustomContainer<FeatureContext>(scenarioKernel);
 
                     // Assert
                     featureContextFromFeatureKernel.Should().BeSameAs(featureContextFromScenarioKernel);
@@ -120,11 +122,14 @@
                     {
                         // Act
                         var featureKernel = featureContainer.Resolve<TContainerType>();
-                        var featureContextFromFeatureKernel = this.ResolveFromCustomContainer<FeatureContext>(featureKernel);
+                        var featureContextFromFeatureKernel =
+                            this.ResolveFromCustomContainer<FeatureContext>(featureKernel);
                         var scenarioKernel1 = scenarioContainer1.Resolve<TContainerType>();
-                        var featureContextFromScenarioKernel1 = this.ResolveFromCustomContainer<FeatureContext>(scenarioKernel1);
+                        var featureContextFromScenarioKernel1 =
+                            this.ResolveFromCustomContainer<FeatureContext>(scenarioKernel1);
                         var scenarioKernel2 = scenarioContainer2.Resolve<TContainerType>();
-                        var featureContextFromScenarioKernel2 = this.ResolveFromCustomContainer<FeatureContext>(scenarioKernel2);
+                        var featureContextFromScenarioKernel2 =
+                            this.ResolveFromCustomContainer<FeatureContext>(scenarioKernel2);
 
                         // Assert
                         featureContextFromFeatureKernel.Should().BeSameAs(featureContextFromScenarioKernel1);

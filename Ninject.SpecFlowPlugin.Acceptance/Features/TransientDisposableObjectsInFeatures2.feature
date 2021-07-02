@@ -8,10 +8,20 @@ We need to make sure that transient disposable feature dependencies are disposed
 each feature. Because we have no way to determine in what order the features are going 
 to be executed, we need write this feature twice and write a hacky scenario.
 	
+    @ninject
     Scenario: Transient disposable feature dependencies 1 are disposed after feature
 
-	Transient disposable feature dependencies are not disposed after feature execution
-    when we use BoDi as the DI framework instead of Ninject.
+    Transient disposable feature dependencies are disposed after feature execution
+    when we use Ninject.
 
-	    Given I have injected TransientDisposableFeatureDependency2 in the binding class StepClassDisposableAfterFeature
-	    Then TransientDisposableFeatureDependency1 has been disposed if the previous feature had to dispose it
+        Given I have injected TransientDisposableFeatureDependency2 in the binding class StepClassDisposableAfterFeature
+        Then TransientDisposableFeatureDependency1 has been disposed if the previous feature had to dispose it
+	    
+    @bodi
+    Scenario: Transient disposable feature dependencies 1 are not disposed after feature
+
+    Transient disposable feature dependencies are not disposed after feature execution
+    when we use BoDi.
+
+        Given I have injected TransientDisposableFeatureDependency2 in the binding class StepClassDisposableAfterFeature
+        Then TransientDisposableFeatureDependency1 has not been disposed if the previous feature had to dispose it

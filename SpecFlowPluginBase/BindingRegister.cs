@@ -2,10 +2,7 @@
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
-    using System.Globalization;
     using System.Linq;
-    using SpecFlowPluginBase.Exceptions;
-    using SpecFlowPluginBase.Properties;
     using TechTalk.SpecFlow;
 
     public static class BindingRegister

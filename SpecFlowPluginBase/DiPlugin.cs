@@ -51,11 +51,10 @@
                         if (!args.ObjectContainer
                             .IsRegistered<ContainerSetupFinder<ScenarioDependenciesAttribute, TContainerType>>())
                         {
+                            args.ObjectContainer.RegisterTypeAs<TTestObjectResolver, ITestObjectResolver>();
                             args.ObjectContainer
-                                .RegisterTypeAs<TTestObjectResolver, ITestObjectResolver>();
-                            args.ObjectContainer
-                                .RegisterTypeAs<TestThreadContainerSetupFinder<TContainerType>,
-                                    ContainerSetupFinder<TestThreadDependenciesAttribute, TContainerType>>();
+                                .RegisterTypeAs<TestThreadContainerSetupFinder<TContainerType>, ContainerSetupFinder<
+                                    TestThreadDependenciesAttribute, TContainerType>>();
                             args.ObjectContainer
                                 .RegisterTypeAs<FeatureContainerSetupFinder<TContainerType>,
                                     ContainerSetupFinder<FeatureDependenciesAttribute, TContainerType>>();
@@ -66,7 +65,8 @@
                     }
 
                     // workaround for parallel execution issue - this should be rather a feature in BoDi?
-                    args.ObjectContainer.Resolve<ContainerSetupFinder<TestThreadDependenciesAttribute, TContainerType>>();
+                    args.ObjectContainer
+                        .Resolve<ContainerSetupFinder<TestThreadDependenciesAttribute, TContainerType>>();
                     args.ObjectContainer.Resolve<ContainerSetupFinder<FeatureDependenciesAttribute, TContainerType>>();
                     args.ObjectContainer.Resolve<ContainerSetupFinder<ScenarioDependenciesAttribute, TContainerType>>();
                 }

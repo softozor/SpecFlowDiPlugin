@@ -81,13 +81,15 @@ to be executed, we need write this feature twice and write a hacky scenario.", P
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Transient disposable feature dependencies 1 are disposed after feature")]
+        [NUnit.Framework.CategoryAttribute("ninject")]
         public virtual void TransientDisposableFeatureDependencies1AreDisposedAfterFeature()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "ninject"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Transient disposable feature dependencies 1 are disposed after feature", "\tTransient disposable feature dependencies are not disposed after feature executi" +
-                    "on\r\n    when we use BoDi as the DI framework instead of Ninject.", tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 11
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Transient disposable feature dependencies 1 are disposed after feature", "    Transient disposable feature dependencies are disposed after feature executio" +
+                    "n\r\n    when we use Ninject.", tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 12
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -107,13 +109,55 @@ to be executed, we need write this feature twice and write a hacky scenario.", P
             else
             {
                 this.ScenarioStart();
-#line 16
-     testRunner.Given("I have injected TransientDisposableFeatureDependency2 in the binding class StepCl" +
+#line 17
+        testRunner.Given("I have injected TransientDisposableFeatureDependency2 in the binding class StepCl" +
                         "assDisposableAfterFeature", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 17
-     testRunner.Then("TransientDisposableFeatureDependency1 has been disposed if the previous feature h" +
+#line 18
+        testRunner.Then("TransientDisposableFeatureDependency1 has been disposed if the previous feature h" +
                         "ad to dispose it", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Transient disposable feature dependencies 1 are not disposed after feature")]
+        [NUnit.Framework.CategoryAttribute("bodi")]
+        public virtual void TransientDisposableFeatureDependencies1AreNotDisposedAfterFeature()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "bodi"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Transient disposable feature dependencies 1 are not disposed after feature", "    Transient disposable feature dependencies are not disposed after feature exec" +
+                    "ution\r\n    when we use BoDi.", tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 21
+    this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 26
+        testRunner.Given("I have injected TransientDisposableFeatureDependency2 in the binding class StepCl" +
+                        "assDisposableAfterFeature", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 27
+        testRunner.Then("TransientDisposableFeatureDependency1 has not been disposed if the previous featu" +
+                        "re had to dispose it", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
